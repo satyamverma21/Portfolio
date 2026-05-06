@@ -4,8 +4,8 @@ import sqlchatbotImg from '@/src/assets/sqlchatbot.png';
 import resumeImg from '@/src/assets/resume.png';
 import florasenseImg from '@/src/assets/florasense.png';
 import plantpalImg from '@/src/assets/plantpal.png';
-import algotradingImg from '@/src/assets/algotrading.png';
 import kedar from '@/src/assets/kedar.png'
+import resume from '@/src/assets/resume.pdf'
 
 export const NAME = 'Satyam Verma';
 
@@ -15,6 +15,7 @@ export const SOCIALS = [
   { label: 'GitHub', href: 'https://github.com/satyamverma21' },
   { label: 'Email', href: 'mailto:satyamverma2122004@gmail.com' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/satyam-verma-linkdin' },
+  { label: 'Resume', href: resume },
 ];
 
 export const PROJECTS = [

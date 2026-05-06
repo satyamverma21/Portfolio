@@ -6,21 +6,29 @@ import {
   Send,
   Code2,
   Database,
+  DownloadIcon,
+  Heading
 } from "lucide-react";
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
 import profileImg from '@/src/assets/profile.png';
 import resume from '@/src/assets/resume.pdf'
 
-const SOCIAL_LINKS = SOCIALS.map((s) => {
+
+const ALL_SOCIAL_LINKS = SOCIALS.map((s) => {
   let icon: any = Mail;
-  if (s.label === 'Kaggle') icon = Database;
-  if (s.label === 'HackerRank') icon = Code2;
+  if (s.label === 'Leetcode') icon = Code2;
+  if (s.label === 'HackerRank') icon = Heading;
   if (s.label === 'GitHub') icon = Github;
   if (s.label === 'LinkedIn') icon = Linkedin;
   if (s.label === 'Email') icon = Mail;
+  if (s.label === 'Resume') icon = DownloadIcon;
   return { icon, href: s.href, label: s.label };
 });
+
+const SOCIAL_LINKS = ALL_SOCIAL_LINKS.slice(0, 5)
+const MOBILE_SOCIAL_LINKS = ALL_SOCIAL_LINKS.slice(2, 6)
+
 
 export default function ProfileCard() {
   return (
@@ -134,7 +142,7 @@ export default function ProfileCard() {
         transition={{ duration: 0.5 }}
         className="fixed bottom-0 left-0 right-0 lg:hidden z-40 glass-panel border-t border-white/10 px-4 py-3 flex justify-around items-center"
       >
-        {SOCIAL_LINKS.slice(0, 4).map((social, i) => (
+        {MOBILE_SOCIAL_LINKS.map((social, i) => (
           <motion.a
             key={i}
             href={social.href}
