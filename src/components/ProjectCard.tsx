@@ -54,7 +54,11 @@ export default function ProjectCard({
               {title}
             </h3>
           </div>
-          <button className="p-2 rounded-full border border-white/20 bg-white/5 hover:border-primary hover:text-primary hover:bg-primary/10 text-on-surface-variant transition-all duration-300 group-hover:rotate-45">
+          <button
+            onClick={() => href && window.open(href, '_blank')}
+            aria-label={href ? `Open ${title} repository` : 'No repository'}
+            className="p-2 rounded-full border border-white/20 bg-white/5 hover:border-primary hover:text-primary hover:bg-primary/10 text-on-surface-variant transition-all duration-300 group-hover:rotate-45"
+          >
             <ArrowUpRight size={24} />
           </button>
         </div>

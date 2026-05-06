@@ -2,19 +2,23 @@ import {
   Github,
   Linkedin,
   Mail,
-  Instagram,
-  Twitter,
   Download,
   Send,
+  Code2,
+  Database,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { SOCIALS } from '../portfolio';
 
-const SOCIAL_LINKS = [
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Github, href: "https://github.com/satyamverma21", label: "GitHub" },
-  { icon: Mail, href: "mailto:satyamverma2122004@gmail.com", label: "Email" },
-];
+const SOCIAL_LINKS = SOCIALS.map((s) => {
+  let icon: any = Mail;
+  if (s.label === 'Kaggle') icon = Database;
+  if (s.label === 'HackerRank') icon = Code2;
+  if (s.label === 'GitHub') icon = Github;
+  if (s.label === 'LinkedIn') icon = Linkedin;
+  if (s.label === 'Email') icon = Mail;
+  return { icon, href: s.href, label: s.label };
+});
 
 export default function ProfileCard() {
   return (

@@ -7,14 +7,21 @@ import {
   Linkedin,
   Download,
   Send,
+  Code2,
+  Database,
 } from "lucide-react";
+import { SOCIALS } from '../portfolio';
 import { motion } from "motion/react";
 
-const SOCIAL_LINKS = [
-  { icon: Github, href: "https://github.com/satyamverma21" },
-  { icon: Linkedin, href: "https://linkedin.com/in/satyam-verma-linkdin" },
-  { icon: Mail, href: "mailto:satyamverma2122004@gmail.com" },
-];
+const SOCIAL_LINKS = SOCIALS.map((s) => {
+  let icon: any = Mail;
+  if (s.label === 'Kaggle') icon = Database;
+  if (s.label === 'HackerRank') icon = Code2;
+  if (s.label === 'GitHub') icon = Github;
+  if (s.label === 'LinkedIn') icon = Linkedin;
+  if (s.label === 'Email') icon = Mail;
+  return { icon, href: s.href };
+});
 
 const NAV_ITEMS = [
   { id: "home", icon: Home, label: "Home" },

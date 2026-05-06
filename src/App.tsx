@@ -1,60 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import ProfileCard from './components/ProfileCard';
 import ProjectCard from './components/ProjectCard';
-import { 
-  AboutSection, 
-  ExperienceSection, 
-  StackSection, 
-  ContactSection 
+import {
+  AboutSection,
+  ExperienceSection,
+  StackSection,
+  ContactSection,
 } from './components/Sections';
-
-const PROJECTS = [
-  {
-    title: 'CivicHub',
-    category: 'Featured GitHub Project',
-    description: 'Community issue reporting app with an Expo React Native frontend, Express + SQLite backend, JWT auth, and local media uploads.',
-    link: 'https://github.com/satyamverma21/CivicHub',
-    isLarge: true
-  },
-  {
-    title: 'Enterprise RAG Knowledge Base Assistant',
-    category: 'AI + Retrieval',
-    description: 'A portfolio-relevant AI system built around a frontend/backend split for enterprise knowledge retrieval and grounded responses.',
-    link: 'https://github.com/satyamverma21/Enterprise-RAG-Knowledge-Base-Assistant'
-  },
-  {
-    title: 'SQL Chatbot with LangChain and LLM Integration',
-    category: 'AI + Data',
-    description: 'A natural-language interface for querying SQL databases with ChatGroq-powered SQL generation across SQLite and MySQL.',
-  },
-  {
-    title: 'Resume Analyser RAG',
-    category: 'Python + NLP',
-    description: 'Python-based resume analysis and retrieval workflow using RAG-style document processing.',
-    link: 'https://github.com/satyamverma21/Resume_analyzer_RAG'
-  },
-  {
-    title: 'FloraSense: Plant Solution',
-    category: 'Flask App',
-    description: 'Plant species identification and disease detection app using Plant.id API, Flask, Tailwind CSS, and Render hosting.',
-    link: 'https://github.com/satyamverma21/FloraSense'
-  },
-  {
-    title: 'Plant Pal',
-    category: 'React Native',
-    description: 'React Native plant detection app with identification, market, and sell-plant flows.',
-    link: 'https://github.com/satyamverma21/PlantPal'
-  },
-  {
-    title: 'Algo-Trading',
-    category: 'Python + Finance',
-    description: 'Stock analysis notebook using moving averages, Alpha Vantage, NumPy, and Pandas to generate trading signals.',
-    link: 'https://github.com/satyamverma21/AlgoTrading'
-  }
-];
+import { PROJECTS, TABS } from './portfolio';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedTab, setSelectedTab] = useState(TABS[0]);
+
+  const filteredProjects = useMemo(() => {
+    if (selectedTab === 'All Work') return PROJECTS;
+    if (selectedTab === 'AI Systems') return PROJECTS.filter((p) => p.category?.includes('AI'));
+    if (selectedTab === 'Python') return PROJECTS.filter((p) => p.category?.includes('Python'));
+    if (selectedTab === 'Web Apps')
+      return PROJECTS.filter((p) => /Web|Flask|React|Expo|Frontend/i.test(p.category || ''));
+    return PROJECTS;
+  }, [selectedTab]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -110,12 +76,13 @@ export default function App() {
               </p>
               
               <div className="mt-8 flex flex-wrap gap-2">
-                {['All Work', 'AI Systems', 'Python', 'Web Apps'].map((tab, i) => (
-                  <button 
+                {TABS.map((tab) => (
+                  <button
                     key={tab}
+                    onClick={() => setSelectedTab(tab)}
                     className={`px-6 py-2 rounded-full text-xs font-display font-semibold uppercase tracking-widest transition-all ${
-                      i === 0 
-                        ? 'bg-primary/10 border border-primary/40 text-primary shadow-[inset_0_0_15px_rgba(146,255,184,0.1)]' 
+                      selectedTab === tab
+                        ? 'bg-primary/10 border border-primary/40 text-primary shadow-[inset_0_0_15px_rgba(146,255,184,0.1)]'
                         : 'bg-white/5 border border-white/10 text-on-surface-variant hover:bg-white/10 hover:text-on-surface'
                     }`}
                   >
@@ -126,9 +93,9 @@ export default function App() {
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {PROJECTS.map((project, i) => (
-                <ProjectCard 
-                  key={i} 
+              {filteredProjects.map((project, i) => (
+                <ProjectCard
+                  key={i}
                   title={project.title}
                   category={project.category}
                   description={project.description}
