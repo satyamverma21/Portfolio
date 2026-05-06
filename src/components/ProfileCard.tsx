@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
+import profileImg from '../assets/profile.png';
 
 const SOCIAL_LINKS = SOCIALS.map((s) => {
   let icon: any = Mail;
@@ -38,7 +39,7 @@ export default function ProfileCard() {
           className="relative w-full mb-6 overflow-hidden rounded-[24px] aspect-square border border-white/10"
         >
           <img
-            src="/profile.png"
+            src={profileImg}
             alt="Satyam Verma profile portrait"
             className="absolute inset-0 h-full w-full object-cover"
           />

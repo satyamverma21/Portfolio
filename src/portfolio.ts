@@ -1,3 +1,11 @@
+import civichubImg from './assets/civichub.png';
+import enterpriceImg from './assets/enterprice.png';
+import sqlchatbotImg from './assets/sqlchatbot.png';
+import resumeImg from './assets/resume.png';
+import florasenseImg from './assets/florasense.png';
+import plantpalImg from './assets/plantpal.png';
+import algotradingImg from './assets/algotrading.png';
+
 export const NAME = 'Satyam Verma';
 
 export const SOCIALS = [
@@ -16,7 +24,7 @@ export const PROJECTS = [
       'Community issue reporting app with an Expo React Native frontend, Express + SQLite backend, JWT auth, and local media uploads.',
     link: 'https://github.com/satyamverma21/CivicHub',
     isLarge: true,
-    image: '/images/civichub.png',
+    image: civichubImg,
   },
   {
     title: 'Enterprise RAG Knowledge Base Assistant',
@@ -24,7 +32,7 @@ export const PROJECTS = [
     description:
       'A portfolio-relevant AI system built around a frontend/backend split for enterprise knowledge retrieval and grounded responses.',
     link: 'https://github.com/satyamverma21/Enterprise-RAG-Knowledge-Base-Assistant',
-    image: '/images/enterprice.png',
+    image: enterpriceImg,
   },
   {
     title: 'SQL Chatbot with LangChain and LLM Integration',
@@ -32,7 +40,7 @@ export const PROJECTS = [
     description:
       'A natural-language interface for querying SQL databases with ChatGroq-powered SQL generation across SQLite and MySQL.',
     link: 'https://github.com/satyamverma21/SQL-Chatbot-demo',
-    image: '/images/sqlchatbot.png',
+    image: sqlchatbotImg,
   },
   {
     title: 'Resume Analyser RAG',
@@ -40,7 +48,7 @@ export const PROJECTS = [
     description:
       'Python-based resume analysis and retrieval workflow using RAG-style document processing.',
     link: 'https://github.com/satyamverma21/Resume_analyzer_RAG',
-    image: '/images/resume.png',
+    image: resumeImg,
   },
   {
     title: 'FloraSense: Plant Solution',
@@ -48,7 +56,7 @@ export const PROJECTS = [
     description:
       'Plant species identification and disease detection app using Plant.id API, Flask, Tailwind CSS, and Render hosting.',
     link: 'https://github.com/satyamverma21/FloraSense',
-    image: '/images/florasense.png',
+    image: florasenseImg,
   },
   {
     title: 'Plant Pal',
@@ -56,7 +64,7 @@ export const PROJECTS = [
     description:
       'React Native plant detection app with identification, market, and sell-plant flows.',
     link: 'https://github.com/satyamverma21/PlantPal',
-    image: '/images/plantpal.png',
+    image: plantpalImg,
   },
   {
     title: 'Algo-Trading',
@@ -64,7 +72,7 @@ export const PROJECTS = [
     description:
       'Stock analysis notebook using moving averages, Alpha Vantage, NumPy, and Pandas to generate trading signals.',
     link: 'https://github.com/satyamverma21/AlgoTrading',
-    image: '/images/algotrading.png',
+    image: algotradingImg,
   },
 ];
 
