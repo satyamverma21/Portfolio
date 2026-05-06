@@ -80,7 +80,7 @@ export function AboutSection() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4"
           >
             {[
-              { value: "2+", label: "Years Exp" },
+              { value: "1+", label: "Years Exp" },
               { value: "7+", label: "Projects" },
               { value: "2", label: "Companies" },
               { value: "1", label: "RLHF Impl." },
