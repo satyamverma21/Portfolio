@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Portfolio
 
-# Run and deploy your AI Studio app
+A modern, full-stack portfolio showcasing projects in AI, web development, and data science. Built with **React**, **TypeScript**, **Tailwind CSS**, and **Vite**.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/35aeb583-8028-4026-bf79-a7ae43db1056
+- 🎨 Modern UI with glassmorphism design
+- 📱 Fully responsive and mobile-optimized  
+- ⚡ Fast performance with Vite
+- 🖼️ High-quality project showcases with images
+- 🎭 Smooth animations and transitions
 
-## Run Locally
+## Quick Start
 
-**Prerequisites:**  Node.js
+```bash
+# Install dependencies
+npm install
 
+# Run development server
+npm run dev
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# Build for production
+npm run build
+```
+
+## Tech Stack
+
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Build Tool**: Vite
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+
+## Projects Included
+
+- CivicHub - Community issue reporting app
+- Enterprise RAG Knowledge Base Assistant
+- SQL Chatbot with LangChain
+- Resume Analyser RAG
+- FloraSense - Plant identification app
+- Plant Pal - React Native plant detection
+- Algo-Trading - Stock analysis system
+
+## Deployment
+
+Built and ready to deploy. Check `package.json` for build scripts.
+
