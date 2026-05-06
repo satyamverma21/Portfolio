@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Sidebar from './components/Sidebar';
+import ProfileCard from './components/ProfileCard';
 import ProjectCard from './components/ProjectCard';
 import { 
   AboutSection, 
@@ -91,12 +91,9 @@ export default function App() {
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] opacity-60" />
       </div>
 
-      <Sidebar 
-        activeSection={activeSection} 
-        onNavigate={scrollToSection} 
-      />
+      <ProfileCard />
 
-      <main className="flex-1 w-full md:pl-[340px] pt-24 md:pt-8 pb-24 px-6 md:pr-8 lg:pr-12 min-h-screen">
+      <main className="flex-1 w-full lg:pl-[376px] pt-20 md:pt-8 pb-32 lg:pb-24 px-6 md:px-8 lg:px-12 min-h-screen">
         <div className="max-w-6xl mx-auto space-y-24">
           
           <AboutSection />
