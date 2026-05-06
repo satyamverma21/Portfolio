@@ -59,7 +59,7 @@ export default function App() {
 
       <ProfileCard />
 
-      <main className="flex-1 w-full lg:pl-[376px] pt-20 md:pt-8 pb-32 lg:pb-24 px-6 md:px-8 lg:px-12 min-h-screen">
+      <main className="flex-1 w-full lg:pl-[360px] xl:pl-[420px] pt-20 md:pt-8 pb-32 lg:pb-24 px-6 md:px-8 lg:px-8 xl:px-12 min-h-screen">
         <div className="max-w-6xl mx-auto space-y-24">
           
           <AboutSection />
