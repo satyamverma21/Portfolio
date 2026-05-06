@@ -1,16 +1,21 @@
 import { motion } from "motion/react";
 import {
-  Terminal,
-  Code2,
-  Database,
-  Layers,
-  Figma,
-  Globe,
-  Fingerprint,
+  Terminal,        // Python — interpreter/shell ✓ (keep)
+  Code2,           // JavaScript — generic code ✓ (keep)
+  Server,          // Node.js — server runtime ✓ (keep)
+  Link,            // LangChain — chaining/linking concept
+  Zap,             // FastAPI — speed/fast is the brand identity
+  Database,        // SQL — ✓ (keep)
+  Brain,           // PyTorch — ML/neural networks
+  Container,       // Docker — containers (direct match)
+  Bot,             // Ollama — local AI/model runner
+  Shield,          // Pydantic — validation/schema enforcement
   Mail,
+  Globe,
+  Phone,
   Github,
   Linkedin,
-  Phone,
+  Route ,     // Express — routing framework
 } from "lucide-react";
 
 export function AboutSection() {
@@ -198,14 +203,19 @@ export function AboutSection() {
 }
 
 export function StackSection() {
-  const tools = [
-    { icon: Terminal, label: "Python" },
-    { icon: Code2, label: "LangChain" },
-    { icon: Layers, label: "FastAPI" },
-    { icon: Database, label: "SQL" },
-    { icon: Figma, label: "PyTorch" },
-    { icon: Globe, label: "Docker" },
-  ];
+const tools = [
+  { icon: Terminal, label: "Python" },
+  { icon: Code2, label: "JavaScript" },
+  { icon: Server, label: "Node.js" },
+  { icon: Link, label: "LangChain" },
+  { icon: Zap, label: "FastAPI" },
+  { icon: Database, label: "SQL" },
+  { icon: Brain, label: "PyTorch" },
+  { icon: Container, label: "Docker" },
+  { icon: Bot, label: "Ollama" },
+  { icon: Shield, label: "Pydantic" },
+  { icon: Route , label: "Express" },
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -241,7 +251,7 @@ export function StackSection() {
           Tech Stack
         </h3>
         <p className="font-sans text-lg text-on-surface-variant font-medium">
-          Core tools powering my AI, backend, and data projects.
+          Core tools powering my AI, backend, web, and data projects.
         </p>
       </motion.div>
       <motion.div
