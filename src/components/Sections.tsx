@@ -120,7 +120,7 @@ export function AboutSection() {
               About Me
             </h3>
             <p className="font-sans text-on-surface-variant leading-relaxed">
-              Currently at <span className="text-on-surface font-medium">Turing</span>, training large language models with RLHF and prompt engineering. Pursuing MCA at Amity University.
+              Previously at <span className="text-on-surface font-medium">Turing</span> (through April 2025), training large language models with RLHF and prompt engineering. Currently pursuing MCA at Amity University.
             </p>
             <p className="font-sans text-on-surface-variant leading-relaxed mt-4">
               Specialized in Python ecosystem: <span className="text-primary">LangChain</span>, <span className="text-primary">FastAPI</span>, <span className="text-primary">PyTorch</span>, and <span className="text-primary">SQL</span>.
@@ -281,7 +281,7 @@ export function ExperienceSection() {
     {
       title: "Python LLM Trainer",
       company: "Turing",
-      period: "Aug 2024 - Present",
+      period: "Aug 2024 - Apr 2025",
       desc: "Worked with a 6-person team to develop and refine large language models, implemented RLHF to align outputs with human preferences, and designed prompts to uncover model weaknesses and improve response quality.",
     },
     {

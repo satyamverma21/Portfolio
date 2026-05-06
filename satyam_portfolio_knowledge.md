@@ -39,7 +39,7 @@ Use this for the hero section (the first thing visitors see):
 
 Satyam is a Python developer with hands-on experience in AI/ML engineering, LLM training, and backend development. He has worked professionally for two companies — an algorithmic trading platform and an AI talent network — and has built personal projects across NLP, plant disease detection, and financial data analysis.
 
-He is currently pursuing a Master's in Computer Applications at Amity University (graduating 2026) while working as an LLM Trainer at Turing. His undergraduate CGPA was 9.2/10 from GGSIPU.
+He is currently pursuing a Master's in Computer Applications at Amity University (graduating 2026). He worked as an LLM Trainer at Turing through April 2025. His undergraduate CGPA was 9.2/10 from GGSIPU.
 
 His technical strengths are in Python, LLM integration, LangChain, FastAPI/Flask, and data pipelines. He is not primarily a frontend developer or designer — his portfolio should reflect a backend/AI engineer identity.
 
@@ -49,7 +49,7 @@ His technical strengths are in Python, LLM integration, LangChain, FastAPI/Flask
 
 ### Python LLM Trainer
 **Company:** Turing
-**Duration:** August 2024 – Present
+**Duration:** August 2024 – April 2025
 **Location:** Remote (California, USA)
 **About Turing:** AI-powered talent network connecting top global talent with innovative companies.
 
