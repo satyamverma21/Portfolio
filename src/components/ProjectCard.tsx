@@ -24,7 +24,7 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 ${
+      className={`project-card group relative rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 ${
         isLarge ? 'md:col-span-2 h-[500px]' : 'h-[400px]'
       }`}
     >
@@ -64,19 +64,23 @@ export default function ProjectCard({
           </button>
         </div>
         {description && (
-          <p className="font-sans text-sm md:text-base text-on-surface-variant mt-4 line-clamp-2 max-w-2xl">
-            {description}
-          </p>
+          <div className="reveal mt-4">
+            <p className="font-sans text-sm md:text-base text-on-surface-variant line-clamp-3 max-w-2xl">
+              {description}
+            </p>
+          </div>
         )}
         {href ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex mt-5 items-center gap-2 text-xs font-display font-semibold uppercase tracking-widest text-primary hover:opacity-80 transition-opacity"
-          >
-            View Repository
-          </a>
+          <div className="reveal">
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex mt-5 items-center gap-2 text-xs font-display font-semibold uppercase tracking-widest text-primary hover:opacity-80 transition-opacity"
+            >
+              View Repository
+            </a>
+          </div>
         ) : null}
       </div>
     </motion.article>
