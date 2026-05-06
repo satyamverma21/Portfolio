@@ -10,6 +10,7 @@ import {
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
 import profileImg from '@/src/assets/profile.png';
+import resume from '@/src/assets/resume.pdf'
 
 const SOCIAL_LINKS = SOCIALS.map((s) => {
   let icon: any = Mail;
@@ -108,7 +109,8 @@ export default function ProfileCard() {
             className="flex flex-col gap-3 mt-auto"
           >
             <a
-              href="#download-cv"
+              href={resume}
+              download
               className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-surface-container/60 border border-white/10 text-xs font-display font-semibold uppercase tracking-widest text-on-surface hover:bg-white/10 hover:border-primary/30 transition-all duration-300 group"
             >
               <Download size={16} className="group-hover:scale-110 transition-transform" />
