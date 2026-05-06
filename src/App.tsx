@@ -10,11 +10,17 @@ import {
 
 const PROJECTS = [
   {
-    title: 'Enterprise RAG Knowledge Base Assistant',
+    title: 'CivicHub',
     category: 'Featured GitHub Project',
-    description: 'A portfolio-relevant AI system built around a frontend/backend split for enterprise knowledge retrieval and grounded responses. Best match for Satyam\'s LLM and NLP profile.',
-    link: 'https://github.com/satyamverma21/Enterprise-RAG-Knowledge-Base-Assistant',
+    description: 'Community issue reporting app with an Expo React Native frontend, Express + SQLite backend, JWT auth, and local media uploads.',
+    link: 'https://github.com/satyamverma21/CivicHub',
     isLarge: true
+  },
+  {
+    title: 'Enterprise RAG Knowledge Base Assistant',
+    category: 'AI + Retrieval',
+    description: 'A portfolio-relevant AI system built around a frontend/backend split for enterprise knowledge retrieval and grounded responses.',
+    link: 'https://github.com/satyamverma21/Enterprise-RAG-Knowledge-Base-Assistant'
   },
   {
     title: 'SQL Chatbot with LangChain and LLM Integration',
@@ -22,10 +28,22 @@ const PROJECTS = [
     description: 'A natural-language interface for querying SQL databases with ChatGroq-powered SQL generation across SQLite and MySQL.',
   },
   {
+    title: 'Resume Analyser RAG',
+    category: 'Python + NLP',
+    description: 'Python-based resume analysis and retrieval workflow using RAG-style document processing.',
+    link: 'https://github.com/satyamverma21/Resume_analyzer_RAG'
+  },
+  {
     title: 'FloraSense: Plant Solution',
     category: 'Flask App',
     description: 'Plant species identification and disease detection app using Plant.id API, Flask, Tailwind CSS, and Render hosting.',
     link: 'https://github.com/satyamverma21/FloraSense'
+  },
+  {
+    title: 'Plant Pal',
+    category: 'React Native',
+    description: 'React Native plant detection app with identification, market, and sell-plant flows.',
+    link: 'https://github.com/satyamverma21/PlantPal'
   },
   {
     title: 'Algo-Trading',
@@ -91,7 +109,7 @@ export default function App() {
                 Selected Projects
               </h2>
               <p className="font-sans text-lg text-on-surface-variant leading-relaxed">
-                A curated set of AI, Python, and product-focused builds that reflects Satyam's backend-first portfolio identity.
+                A curated set of AI, Python, mobile, and product-focused builds that reflects Satyam's backend-first portfolio identity.
               </p>
               
               <div className="mt-8 flex flex-wrap gap-2">

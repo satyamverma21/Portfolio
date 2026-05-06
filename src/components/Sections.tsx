@@ -37,7 +37,7 @@ export function AboutSection() {
         <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { value: '2+', label: 'Years Exp' },
-            { value: '3+', label: 'Projects' },
+            { value: '7+', label: 'Projects' },
             { value: '2', label: 'Companies' },
             { value: '1', label: 'RLHF Impl.' }
           ].map((stat) => (
