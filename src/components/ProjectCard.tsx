@@ -34,7 +34,6 @@ export default function ProjectCard({
             src={image} 
             alt={title} 
             className="w-full h-full object-cover object-top rounded-xl group-hover:scale-[1.03] transition-transform duration-700 opacity-90 group-hover:opacity-100"
-            referrerPolicy="no-referrer"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/10 to-transparent rounded-xl border border-white/5 flex items-center justify-center">
