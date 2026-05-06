@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
-import profileImg from '../assets/profile.png';
+import profileImg from '@/src/assets/profile.png';
 
 const SOCIAL_LINKS = SOCIALS.map((s) => {
   let icon: any = Mail;

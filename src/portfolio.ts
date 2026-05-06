@@ -1,10 +1,10 @@
-import civichubImg from './assets/civichub.png';
-import enterpriceImg from './assets/enterprice.png';
-import sqlchatbotImg from './assets/sqlchatbot.png';
-import resumeImg from './assets/resume.png';
-import florasenseImg from './assets/florasense.png';
-import plantpalImg from './assets/plantpal.png';
-import algotradingImg from './assets/algotrading.png';
+import civichubImg from '@/src/assets/civichub.png';
+import enterpriceImg from '@/src/assets/enterprice.png';
+import sqlchatbotImg from '@/src/assets/sqlchatbot.png';
+import resumeImg from '@/src/assets/resume.png';
+import florasenseImg from '@/src/assets/florasense.png';
+import plantpalImg from '@/src/assets/plantpal.png';
+import algotradingImg from '@/src/assets/algotrading.png';
 
 export const NAME = 'Satyam Verma';
 
