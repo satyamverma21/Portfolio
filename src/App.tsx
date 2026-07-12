@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { Moon, Sun } from 'lucide-react';
 import ProfileCard from './components/ProfileCard';
 import ProjectCard from './components/ProjectCard';
 import {
@@ -12,6 +13,20 @@ import { PROJECTS, TABS } from './portfolio';
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const light = localStorage.getItem('portfolio-theme') === 'light';
+    setIsLight(light);
+    document.documentElement.dataset.theme = light ? 'light' : 'dark';
+  }, []);
+
+  const toggleTheme = () => {
+    const nextIsLight = !isLight;
+    setIsLight(nextIsLight);
+    document.documentElement.dataset.theme = nextIsLight ? 'light' : 'dark';
+    localStorage.setItem('portfolio-theme', nextIsLight ? 'light' : 'dark');
+  };
 
   const filteredProjects = useMemo(() => {
     if (selectedTab === 'All Work') return PROJECTS;
@@ -60,6 +75,16 @@ export default function App() {
       <ProfileCard activeSection={activeSection} onNavigate={scrollToSection} />
 
       <main className="flex-1 w-full lg:pl-[360px] xl:pl-[420px] pt-20 md:pt-8 pb-32 lg:pb-24 px-6 md:px-8 lg:px-8 xl:px-12 min-h-screen">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          aria-pressed={isLight}
+          title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          className="fixed right-5 top-5 md:right-8 md:top-8 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-surface-container/80 text-on-surface-variant shadow-lg backdrop-blur-xl transition-all hover:border-primary/50 hover:text-primary"
+        >
+          {isLight ? <Moon size={18} /> : <Sun size={18} />}
+        </button>
         <div className="max-w-6xl mx-auto space-y-24">
           
           <AboutSection />

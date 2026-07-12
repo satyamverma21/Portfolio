@@ -8,14 +8,11 @@ import {
   Database,
   DownloadIcon,
   Heading,
-  Moon,
-  Sun,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
 import profileImg from '@/src/assets/profile.png';
 import resume from '@/src/assets/resume.pdf'
-import { useEffect, useState } from 'react';
 
 
 const ALL_SOCIAL_LINKS = SOCIALS.map((s) => {
@@ -47,23 +44,6 @@ export default function ProfileCard({
   activeSection: string;
   onNavigate: (id: string) => void;
 }) {
-  const [isLight, setIsLight] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    // Keep the portfolio dark by default; only an explicit visitor choice overrides it.
-    const light = savedTheme === 'light';
-    setIsLight(light);
-    document.documentElement.dataset.theme = light ? 'light' : 'dark';
-  }, []);
-
-  const toggleTheme = () => {
-    const nextIsLight = !isLight;
-    setIsLight(nextIsLight);
-    document.documentElement.dataset.theme = nextIsLight ? 'light' : 'dark';
-    localStorage.setItem('portfolio-theme', nextIsLight ? 'light' : 'dark');
-  };
-
   return (
     <>
       {/* Desktop Profile Card - Sticky */}
@@ -136,17 +116,6 @@ export default function ProfileCard({
             </p>
           </motion.div>
 
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-pressed={isLight}
-            className="mt-3 inline-flex self-center items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-display font-semibold uppercase tracking-widest text-on-surface-variant hover:border-primary/40 hover:text-primary transition-colors"
-            aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
-          >
-            {isLight ? <Moon size={14} /> : <Sun size={14} />}
-            {isLight ? 'Switch to dark mode' : 'Switch to light mode'}
-          </button>
-
           {/* Social Links */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -214,15 +183,6 @@ export default function ProfileCard({
             {item.label}
           </motion.button>
         ))}
-        <motion.button
-          type="button"
-          onClick={toggleTheme}
-          title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
-          whileHover={{ scale: 1.1 }}
-          className="p-2 text-[10px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors"
-        >
-          {isLight ? 'Dark' : 'Light'}
-        </motion.button>
       </motion.nav>
     </>
   );
