@@ -57,7 +57,7 @@ export default function App() {
         <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] opacity-60" />
       </div>
 
-      <ProfileCard />
+      <ProfileCard activeSection={activeSection} onNavigate={scrollToSection} />
 
       <main className="flex-1 w-full lg:pl-[360px] xl:pl-[420px] pt-20 md:pt-8 pb-32 lg:pb-24 px-6 md:px-8 lg:px-8 xl:px-12 min-h-screen">
         <div className="max-w-6xl mx-auto space-y-24">
@@ -114,11 +114,10 @@ export default function App() {
           {/* Footer */}
           <footer className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 pb-8">
             <p className="font-display font-semibold text-[10px] text-on-surface-variant uppercase tracking-widest">
-              © 2024 Technical Professional. All rights reserved.
+              © 2026 Satyam Verma. All rights reserved.
             </p>
             <div className="flex gap-8">
-              <a href="#" className="font-sans text-xs text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="font-sans text-xs text-on-surface-variant hover:text-primary transition-colors">Terms of Service</a>
+              <span className="font-sans text-xs text-on-surface-variant">Built for thoughtful software.</span>
             </div>
           </footer>
         </div>

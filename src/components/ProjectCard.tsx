@@ -1,7 +1,9 @@
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import type { Key } from 'react';
 
 interface ProjectProps {
+  key?: Key;
   title: string;
   category: string;
   description?: string;

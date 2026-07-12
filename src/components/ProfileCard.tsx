@@ -7,12 +7,15 @@ import {
   Code2,
   Database,
   DownloadIcon,
-  Heading
+  Heading,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { SOCIALS } from '../portfolio';
 import profileImg from '@/src/assets/profile.png';
 import resume from '@/src/assets/resume.pdf'
+import { useEffect, useState } from 'react';
 
 
 const ALL_SOCIAL_LINKS = SOCIALS.map((s) => {
@@ -30,7 +33,37 @@ const SOCIAL_LINKS = ALL_SOCIAL_LINKS.slice(0, 5)
 const MOBILE_SOCIAL_LINKS = ALL_SOCIAL_LINKS.slice(2, 6)
 
 
-export default function ProfileCard() {
+const NAV_ITEMS = [
+  { id: 'home', label: 'Home' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
+
+export default function ProfileCard({
+  activeSection,
+  onNavigate,
+}: {
+  activeSection: string;
+  onNavigate: (id: string) => void;
+}) {
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    // Keep the portfolio dark by default; only an explicit visitor choice overrides it.
+    const light = savedTheme === 'light';
+    setIsLight(light);
+    document.documentElement.dataset.theme = light ? 'light' : 'dark';
+  }, []);
+
+  const toggleTheme = () => {
+    const nextIsLight = !isLight;
+    setIsLight(nextIsLight);
+    document.documentElement.dataset.theme = nextIsLight ? 'light' : 'dark';
+    localStorage.setItem('portfolio-theme', nextIsLight ? 'light' : 'dark');
+  };
+
   return (
     <>
       {/* Desktop Profile Card - Sticky */}
@@ -38,14 +71,14 @@ export default function ProfileCard() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="hidden lg:flex fixed left-8 top-18 w-[340px] flex-col z-40 h-fit max-h-[calc(100vh-5rem)] overflow-y-auto custom-scrollbar"
+        className="hidden lg:flex fixed left-8 top-6 bottom-6 w-[340px] flex-col z-40 h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar pr-1"
       >
         {/* Profile Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative w-full mb-6 overflow-hidden rounded-[24px] aspect-square border border-white/10"
+          className="relative w-full mb-5 overflow-hidden rounded-[24px] aspect-square border border-white/10"
         >
           <img
             src={profileImg}
@@ -59,7 +92,7 @@ export default function ProfileCard() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="glass-panel rounded-[32px] p-8 flex flex-col"
+          className="glass-panel rounded-[32px] p-6 flex flex-col relative"
         >
           {/* Status Badge */}
           <motion.div
@@ -73,6 +106,20 @@ export default function ProfileCard() {
               Available for work
             </span>
           </motion.div>
+
+          <nav aria-label="Primary navigation" className="grid grid-cols-4 gap-1 mb-6 rounded-xl border border-white/10 bg-white/5 p-1">
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => onNavigate(item.id)}
+                aria-current={activeSection === item.id ? 'page' : undefined}
+                className={`w-full min-w-0 rounded-lg px-1 py-2 text-[9px] font-display font-semibold uppercase tracking-[0.08em] text-center whitespace-nowrap transition-colors ${activeSection === item.id ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-on-surface hover:bg-white/10'}`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
 
           {/* Name */}
           <motion.div
@@ -88,6 +135,17 @@ export default function ProfileCard() {
               Python Developer | AI & NLP
             </p>
           </motion.div>
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-pressed={isLight}
+            className="mt-3 inline-flex self-center items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-display font-semibold uppercase tracking-widest text-on-surface-variant hover:border-primary/40 hover:text-primary transition-colors"
+            aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          >
+            {isLight ? <Moon size={14} /> : <Sun size={14} />}
+            {isLight ? 'Switch to dark mode' : 'Switch to light mode'}
+          </button>
 
           {/* Social Links */}
           <motion.div
@@ -140,19 +198,31 @@ export default function ProfileCard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed bottom-0 left-0 right-0 lg:hidden z-40 glass-panel border-t border-white/10 px-4 py-3 flex justify-around items-center"
+        aria-label="Mobile navigation"
+        className="fixed bottom-0 left-0 right-0 lg:hidden z-40 glass-panel border-t border-white/10 px-3 py-3 flex justify-around items-center"
       >
-        {MOBILE_SOCIAL_LINKS.map((social, i) => (
-          <motion.a
-            key={i}
-            href={social.href}
-            title={social.label}
+        {NAV_ITEMS.map((item) => (
+          <motion.button
+            key={item.id}
+            type="button"
+            onClick={() => onNavigate(item.id)}
+            aria-current={activeSection === item.id ? 'page' : undefined}
+            title={item.label}
             whileHover={{ scale: 1.1 }}
-            className="p-2 text-on-surface-variant hover:text-primary transition-colors"
+            className={`p-2 text-[10px] font-display font-semibold uppercase tracking-wider transition-colors ${activeSection === item.id ? 'text-primary' : 'text-on-surface-variant hover:text-primary'}`}
           >
-            <social.icon size={20} />
-          </motion.a>
+            {item.label}
+          </motion.button>
         ))}
+        <motion.button
+          type="button"
+          onClick={toggleTheme}
+          title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          whileHover={{ scale: 1.1 }}
+          className="p-2 text-[10px] font-display font-semibold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors"
+        >
+          {isLight ? 'Dark' : 'Light'}
+        </motion.button>
       </motion.nav>
     </>
   );

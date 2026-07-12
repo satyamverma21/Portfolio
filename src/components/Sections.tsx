@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useState, type FormEvent } from "react";
 import {
   Terminal,        // Python — interpreter/shell ✓ (keep)
   Code2,           // JavaScript — generic code ✓ (keep)
@@ -341,6 +342,19 @@ export function ExperienceSection() {
 }
 
 export function ContactSection() {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+
+  const updateField = (field: keyof typeof form, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const submitForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const subject = form.subject || `Portfolio enquiry from ${form.name || 'a visitor'}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
+    window.location.href = `mailto:satyamverma2122004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <section
       id="contact"
@@ -447,7 +461,7 @@ export function ContactSection() {
         viewport={{ once: true }}
         className="glass-panel p-6 md:p-8 lg:p-10 lg:p-12 rounded-[32px]"
       >
-        <form className="space-y-6 md:space-y-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6 md:space-y-8" onSubmit={submitForm}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <div className="space-y-2">
               <label className="block font-display font-semibold text-[10px] text-on-surface-variant uppercase tracking-widest">
@@ -456,6 +470,9 @@ export function ContactSection() {
               <input
                 type="text"
                 placeholder="Your name"
+                value={form.name}
+                onChange={(e) => updateField('name', e.target.value)}
+                required
                 className="w-full bg-transparent border-b border-white/20 focus:border-primary text-on-surface py-2 md:py-3 text-sm md:text-base outline-none transition-colors placeholder:text-white/20"
               />
             </div>
@@ -466,6 +483,9 @@ export function ContactSection() {
               <input
                 type="email"
                 placeholder="you@example.com"
+                value={form.email}
+                onChange={(e) => updateField('email', e.target.value)}
+                required
                 className="w-full bg-transparent border-b border-white/20 focus:border-primary text-on-surface py-2 md:py-3 text-sm md:text-base outline-none transition-colors placeholder:text-white/20"
               />
             </div>
@@ -477,6 +497,8 @@ export function ContactSection() {
             <input
               type="text"
               placeholder="Backend / AI opportunity"
+              value={form.subject}
+              onChange={(e) => updateField('subject', e.target.value)}
               className="w-full bg-transparent border-b border-white/20 focus:border-primary text-on-surface py-2 md:py-3 text-sm md:text-base outline-none transition-colors placeholder:text-white/20"
             />
           </div>
@@ -486,6 +508,9 @@ export function ContactSection() {
             </label>
             <textarea
               placeholder="Describe the role, project, or collaboration."
+              value={form.message}
+              onChange={(e) => updateField('message', e.target.value)}
+              required
               rows={4}
               className="w-full bg-transparent border-b border-white/20 focus:border-primary text-on-surface py-2 md:py-3 text-sm md:text-base outline-none transition-colors resize-none placeholder:text-white/20"
             />
