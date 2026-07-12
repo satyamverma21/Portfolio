@@ -51,7 +51,7 @@ export default function ProfileCard({
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="hidden lg:flex fixed left-8 top-6 bottom-6 w-[340px] flex-col z-40 h-[calc(100vh-3rem)] overflow-y-auto custom-scrollbar pr-1"
+        className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 w-[340px] max-h-[calc(100vh-3rem)] flex-col z-40 overflow-y-auto custom-scrollbar pr-1"
       >
         {/* Profile Image */}
         <motion.div
