@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import {
-  ArrowDown, ArrowUpRight, BriefcaseBusiness, Check, ChevronRight, Code2,
-  Download, Github, Linkedin, Mail, MapPin, Menu, Phone, Send, Sparkles,
+  ArrowDown, ArrowUpRight, Check, ChevronRight, Code2,
+  Download, Github, Linkedin, Mail, MapPin, Menu, Moon, Send, Sparkles, Sun,
   X, Zap,
 } from 'lucide-react';
 import { PROJECTS, resume } from './portfolio';
@@ -26,7 +26,16 @@ function App() {
   const [filter, setFilter] = useState('All');
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('portfolio-theme');
+    return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const filtered = useMemo(() => filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(filter)), [filter]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkMode ? 'dark' : 'light';
+    localStorage.setItem('portfolio-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -52,7 +61,7 @@ function App() {
     <header className="site-header">
       <button className="brand" onClick={() => goTo('about')} aria-label="Back to top"><span>SV</span><strong>Satyam Verma</strong></button>
       <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map(([id, label]) => <button key={id} className={active === id ? 'active' : ''} onClick={() => goTo(id)}>{label}</button>)}</nav>
-      <a className="header-cta" href={`mailto:${'satyamverma2122004@gmail.com'}`}>Let's talk <ArrowUpRight size={15} /></a>
+      <div className="header-actions"><button className="theme-toggle" onClick={() => setDarkMode(!darkMode)} aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'} title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>{darkMode ? <Sun size={16} /> : <Moon size={16} />}</button><a className="header-cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=satyamverma2122004@gmail.com" target="_blank" rel="noreferrer">Let's talk <ArrowUpRight size={15} /></a></div>
       <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
     </header>
     {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map(([id, label]) => <button key={id} onClick={() => goTo(id)}>{label}<ArrowUpRight size={16} /></button>)}</nav>}
